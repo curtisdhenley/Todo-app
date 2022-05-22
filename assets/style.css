@@ -63,6 +63,7 @@ form button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.5s ease;
 }
 
 .todo li {
@@ -86,6 +87,15 @@ form button:hover {
     background: rgb(12, 197, 12);
 }
 
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
 .delete-btn {
     background: rgb(251, 26, 26);
+}
+
+.fa-trash, .fa-check {
+    pointer-events: none;
 }
