@@ -25,11 +25,18 @@
             <button id="todo-button" type="submit">
                 <i class="fas fa-plus-square"></i>
             </button>
+            <div class="select">
+                <select name="todos" id="filter-todo">
+                    <option class="all" value="all">All</option>
+                    <option value="completed">Completed</option>
+                    <option value="not completed">Not completed</option>
+                </select>
+            </div>
         </form>
 
         <!-- created list -->
         <div id="todo-container">
-            <ul id="todo-list">
+            <ul class="todo-list" id="todo-list">
             </ul>
         </div>
 

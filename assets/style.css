@@ -43,6 +43,44 @@ form button:hover {
     color: white;
 }
 
+/* remove default styling on select */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: #ff6f47;
+    width: 11rem;
+    cursor: pointer;
+    padding-top: 1rem;
+}
+
+
+.select {
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.select::after {
+    content: "\25BC";
+    position: absolute;
+    background: #ff6f47;
+    top: 0.6rem;
+    right: 0;
+    padding: 0.7rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.select:hover::after {
+    background: white;
+    color: #ff6f47;
+}
+
 /* list styling */
 #todo-container {
     display: flex;
@@ -94,6 +132,11 @@ form button:hover {
 
 .delete-btn {
     background: rgb(251, 26, 26);
+}
+
+.fall {
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
 }
 
 .fa-trash, .fa-check {

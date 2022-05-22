@@ -2,11 +2,13 @@
 const todoInput = document.getElementById("todo-input");
 const todoBtn = document.getElementById("todo-button");
 const todoList = document.getElementById("todo-list");
+const filterOption = document.getElementById("filter-todo");
 
 
 // event listeners
 todoBtn.addEventListener("click", addTodo);
-todoList.addEventListener("click", deleteCheck)
+todoList.addEventListener("click", deleteCheck);
+filterOption.addEventListener("click", filterTodo);
 
 
 // functions
@@ -43,13 +45,45 @@ function deleteCheck(event) {
     // delete todo
     if (item.classList[0] === 'delete-btn') {
         const todo = item.parentElement;
-        todo.remove();
+        // delete animation
+        todo.classList.add('fall');
+        todo.addEventListener('transitionend', function() {
+            todo.remove();
+        });
     };
 
     // complete todo
     if (item.classList[0] === 'complete-btn') {
         const todo = item.parentElement;
         todo.classList.toggle('completed');
+        filterTodo();
     }
 
 };
+
+function filterTodo(event) {
+    const todos = todoList.childNodes;
+    todos.forEach(function(todo) {
+        if (todo.nodeType === Node.ELEMENT_NODE) {
+            switch (filterOption.value) {
+                case "all":
+                    todo.style.display = "flex";
+                    break;
+                case "completed":
+                    if (todo.classList.contains('completed')) {
+                        todo.style.display = "flex";
+                    } else {
+                        todo.style.display = "none";
+                    }
+                    break;
+                case "not completed":
+                    if (!todo.classList.contains("completed")) {
+                        todo.style.display = "flex";
+                    } else {
+                        todo.style.display = "none";
+                    }
+                    break;
+            }
+        }
+    });
+}
